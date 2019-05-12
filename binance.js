@@ -1,7 +1,7 @@
 var exec = require('child_process').exec;
 
 var fs = require('fs');
-var obj = JSON.parse(fs.readFileSync(process.env.HOME + 'binance.json', 'utf8'));
+var obj = JSON.parse(fs.readFileSync('binance.json', 'utf8'));
 
 const binance = require('node-binance-api')().options({
   'APIKEY': obj.key,
