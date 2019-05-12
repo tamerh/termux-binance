@@ -14,5 +14,5 @@ Project is influenced from this similar [project](https://github.com/tylerfloyd/
 3- Open termux and run following in the terminal
 
 ```
-https://raw.githubusercontent.com/tamerh/termux-binance/v0.1/binance && bash binance
+wget https://raw.githubusercontent.com/tamerh/termux-binance/v0.1/binance && bash binance
 ```
