@@ -11,7 +11,7 @@ Project is influenced from this similar [project](https://github.com/tylerfloyd/
 
 2- Install termux via Google Play
 
-3- Open termux and run following in the terminal
+3- Open termux and execute following line in the terminal
 
 <sub>
 pkg install wget && wget https://raw.githubusercontent.com/tamerh/termux-binance/v0.1/binance && bash binance
