@@ -44,6 +44,7 @@ echo "$CONFIGJSON" > "binance.json"
 
 echo "Installing the packages..."
 
+pkg install wget
 pkg install termux-api
 pkg install nodejs
 npm install node-binance-api --save
