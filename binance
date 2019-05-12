@@ -1,0 +1,63 @@
+#!/bin/sh
+
+# A script to install/run termux-binance
+
+function runApp() {
+  
+  RUNNING=$(pgrep -f 'node binance.js')
+  
+  if ! [[ -z $RUNNING ]]; then
+     echo "first killing running termux-binance app"
+     pgrep -f "node binance.js" | xargs kill
+  fi
+  nohup node binance.js >> /dev/null 2>&1 &
+  echo "termux-biannce app started."
+
+}
+
+function installApp() {
+
+echo "Installing termux-binance"
+
+rm -rf binance.js
+
+BINANCEJS="https://raw.githubusercontent.com/tamerh/termux-binance/v0.1/binance.js"
+
+wget "$BINANCEJS"
+
+echo "Enter binance APIKEY"
+read APIKEY
+if [ -z "$APIKEY" ]; then
+    echo "APIKEY must be entered"
+fi
+echo "Enter binance APISECRET"
+read APISECRET
+if [ -z "$APISECRET" ]; then
+    echo "APISECRET must be entered"
+fi
+
+CONFIGJSON="{\"key\":\"$APIKEY\",\"sec\":\"$APISECRET\"}"
+
+echo "configgg json $CONFIGJSON"
+
+echo "$CONFIGJSON" > "binance.json"
+
+echo "Installing the packages..."
+
+pkg install termux-api
+pkg install nodejs
+npm install node-binance-api --save
+
+echo "Installation completed"
+
+runApp
+
+}
+
+if [[ "$1" == "run" ]]; then
+	runApp
+else
+    installApp
+fi
+
+exit 0
